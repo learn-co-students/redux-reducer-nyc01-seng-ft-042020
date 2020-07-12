@@ -1,27 +1,14 @@
-export function manageFriends(
+export function managePresents(
   state = {
-    friends: [],
+    numberOfPresents: 0,
   },
   action
 ) {
   switch (action.type) {
-    case "ADD_FRIEND":
-      return {
-        ...state,
-        friends: [...state.friends, action.friend],
-      };
-
-    case "REMOVE_FRIEND":
-      const removalIndex = state.friends.findIndex(
-        (friend) => friend.id === action.id
-      );
-      return {
-        ...state,
-        friends: [
-          ...state.friends.slice(0, removalIndex),
-          ...state.friends.slice(removalIndex + 1),
-        ],
-      };
+    case "INCREASE":
+      return Object.assign({}, state, {
+        numberOfPresents: state.numberOfPresents + 1,
+      });
 
     default:
       return state;
